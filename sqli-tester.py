@@ -37,7 +37,7 @@ response = requests.get(url)
 if response.status_code == 200:
     # Controllare la risposta per verificare la presenza di indicatori comuni di SQL injection (analisi euristica)
     if re.search("error in your SQL syntax|mysql_fetch|SQL syntax|Warning: mysql_|UNION|SELECT|INSERT", response.text, re.IGNORECASE):
-        print(Fore.RED + "Rilevata una possibile vulnerabilità di iniezione SQL sulla base di un'analisi euristica." + Style.RESET_ALL)
+        print(Fore.RED + "Rilevata una possibile vulnerabilità SQLi sulla base di un'analisi euristica." + Style.RESET_ALL)
     else:
         # Controllare l'intestazione del server per determinare il DBMS utilizzato.
         if "mysql" in response.headers["server"].lower():
